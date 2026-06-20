@@ -3,359 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lead Magnets &amp; Your Email List · Remote Goats</title>
+<title>Remote Goats — Community Call Slides</title>
 <style>
   :root{
-    --bg0:#ffffff; --bg1:#f2f6fc; --bg2:#e9eff8;
     --ink:#0f1a2e; --mut:#54617a; --faint:#8a96ad;
-    --glass:#ffffff; --glass2:#f5f8fd;
-    --stroke:rgba(15,26,46,.10); --stroke2:rgba(15,26,46,.17);
-    --blue:#2f6df6; --blue2:#1f5fe0; --cyan:#1aa3d6;
-    --grad:linear-gradient(135deg,#2f6df6,#1aa3d6);
-    --green:#1f9d57; --red:#df463d; --amber:#bd7d00;
-    --r:26px; --shadow:0 16px 44px rgba(28,52,107,.10);
+    --glass:#ffffff; --stroke:rgba(15,26,46,.10);
+    --blue:#2f6df6; --cyan:#1aa3d6; --grad:linear-gradient(135deg,#2f6df6,#1aa3d6);
+    --shadow:0 16px 44px rgba(28,52,107,.10);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
   body{
     font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;
     background:radial-gradient(1100px 720px at 82% -10%,#e6edfb 0%,transparent 55%),
                radial-gradient(820px 620px at 0% 110%,#e9f0ff 0%,transparent 55%),
-               linear-gradient(160deg,var(--bg0),var(--bg1) 55%,var(--bg2));
-    color:var(--ink);overflow:hidden;-webkit-font-smoothing:antialiased;
+               linear-gradient(160deg,#ffffff,#f2f6fc 55%,#e9eff8);
+    display:flex;align-items:center;justify-content:center;padding:6vh 6vw;
   }
-  .deck{position:fixed;inset:0}
-  .slide{
-    position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-    padding:min(7vh,64px) clamp(64px,13vw,240px);opacity:0;visibility:hidden;
-    transform:scale(.985);transition:opacity .45s ease,transform .45s ease;
-  }
-  .slide.active{opacity:1;visibility:visible;transform:scale(1)}
-  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:clamp(11px,1.15vw,15px);
-    letter-spacing:.16em;text-transform:uppercase;color:var(--blue2);font-weight:700;margin-bottom:18px}
-  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--grad);box-shadow:0 0 14px var(--blue)}
-  h1{font-size:clamp(34px,6vw,86px);line-height:1.02;letter-spacing:-.02em;font-weight:800}
-  h2{font-size:clamp(26px,3.9vw,56px);line-height:1.05;letter-spacing:-.018em;font-weight:800}
-  .sub{font-size:clamp(16px,1.7vw,25px);color:var(--mut);margin-top:18px;max-width:30ch;line-height:1.45}
-  .lead{font-size:clamp(17px,1.9vw,28px);color:var(--ink);line-height:1.45;max-width:24ch;font-weight:600}
-  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .muted{color:var(--mut)}
-  .row{display:flex;gap:26px;align-items:stretch}
-  .row.wrap{flex-wrap:wrap}
-  .grow{flex:1}
-  .center{align-items:center}
-  .mt{margin-top:34px}.mt2{margin-top:22px}
-  .card{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r);
-    padding:26px 28px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:var(--shadow)}
-  .card.soft{background:var(--glass2)}
-  .card .ico{font-size:30px;margin-bottom:12px;display:block}
-  .card h3{font-size:clamp(18px,1.9vw,26px);font-weight:700;letter-spacing:-.01em}
-  .card p{color:var(--mut);font-size:clamp(14px,1.35vw,18px);line-height:1.5;margin-top:8px}
-  .num{font-family:'Inter';font-weight:800;font-size:clamp(40px,6vw,84px);line-height:1;
-    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .pill{display:inline-block;padding:7px 15px;border-radius:999px;border:1px solid var(--stroke2);
-    background:rgba(255,255,255,.05);font-size:clamp(13px,1.3vw,17px);font-weight:600}
-  .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:700}
-  ul.clean{list-style:none;display:flex;flex-direction:column;gap:14px}
-  ul.clean li{display:flex;gap:13px;align-items:flex-start;font-size:clamp(15px,1.55vw,21px);line-height:1.4}
-  ul.clean li .b{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
-    font-size:14px;font-weight:800;margin-top:2px}
-  .b.good{background:rgba(86,224,138,.16);color:var(--green);border:1px solid rgba(86,224,138,.35)}
-  .b.bad{background:rgba(255,122,122,.14);color:var(--red);border:1px solid rgba(255,122,122,.34)}
-  .b.no{background:rgba(255,122,122,.14);color:var(--red);border:1px solid rgba(255,122,122,.34)}
-  /* nav */
-  .hud{position:fixed;left:0;right:0;bottom:0;height:6px;background:rgba(15,26,46,.08);z-index:30}
-  .hud .bar{height:100%;background:var(--grad);width:0;transition:width .45s ease}
-  .meta{position:fixed;bottom:20px;right:28px;font-size:13px;color:var(--faint);z-index:30;
-    font-weight:600;letter-spacing:.04em}
-  .brand{position:fixed;bottom:18px;left:28px;font-size:12px;color:var(--faint);z-index:30;
-    letter-spacing:.14em;text-transform:uppercase;font-weight:700;display:flex;gap:9px;align-items:center}
-  .brand .d{width:7px;height:7px;border-radius:50%;background:var(--grad)}
-  .arrows{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:30}
-  .arrows button{width:38px;height:38px;border-radius:11px;border:1px solid var(--stroke);
-    background:var(--glass);color:var(--ink);font-size:17px;cursor:pointer;backdrop-filter:blur(10px)}
-  .arrows button:hover{background:var(--glass2)}
-  /* helpers for diagrams */
-  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
-  .node{flex:1;min-width:150px;background:var(--glass);border:1px solid var(--stroke);border-radius:18px;
-    padding:20px 18px;text-align:center;backdrop-filter:blur(12px)}
-  .node .ni{font-size:30px}
-  .node .nt{font-weight:700;margin-top:8px;font-size:clamp(14px,1.4vw,19px)}
-  .node .nd{color:var(--mut);font-size:clamp(12px,1.15vw,15px);margin-top:5px;line-height:1.35}
-  .arrow{flex:none;display:grid;place-items:center;color:var(--blue2);font-size:26px;padding:0 6px}
-  .stat{flex:1;text-align:center;padding:30px 22px}
-  .stat .lab{color:var(--mut);font-size:clamp(14px,1.4vw,19px);margin-top:10px;line-height:1.4}
-  /* browser mock */
-  .browser{background:rgba(10,16,34,.7);border:1px solid var(--stroke2);border-radius:18px;overflow:hidden;
-    box-shadow:var(--shadow);width:min(560px,46vw)}
-  .browser .bartop{display:flex;gap:7px;padding:12px 14px;background:rgba(255,255,255,.05);
-    border-bottom:1px solid var(--stroke)}
-  .dotr{width:11px;height:11px;border-radius:50%;display:inline-block}
-  .page{padding:26px 30px;text-align:center}
-  .page .hl{font-size:clamp(18px,2vw,27px);font-weight:800;line-height:1.15}
-  .page .sh{color:var(--mut);font-size:14px;margin-top:8px}
-  .page .bl{text-align:left;display:flex;flex-direction:column;gap:7px;margin:16px auto;max-width:300px}
-  .page .bl span{font-size:13px;color:var(--ink);display:flex;gap:8px}
-  .page .mock{height:70px;border-radius:12px;margin:14px auto;max-width:200px;
-    background:linear-gradient(135deg,rgba(91,156,255,.25),rgba(115,230,255,.18));
-    border:1px dashed var(--stroke2);display:grid;place-items:center;color:var(--blue2);font-size:12px}
-  .page .inp{height:42px;border-radius:11px;border:1px solid var(--stroke2);background:rgba(255,255,255,.05);
-    display:flex;align-items:center;padding:0 14px;color:var(--faint);font-size:13px;max-width:320px;margin:8px auto}
-  .page .btn{height:44px;border-radius:11px;background:var(--grad);color:#08122b;font-weight:800;
-    display:grid;place-items:center;max-width:320px;margin:10px auto 0;font-size:14px}
-  .callouts{display:flex;flex-direction:column;gap:14px;justify-content:center}
-  .callout{display:flex;gap:12px;align-items:flex-start}
-  .callout .n{flex:none;width:28px;height:28px;border-radius:9px;background:var(--glass2);border:1px solid var(--stroke2);
-    display:grid;place-items:center;font-weight:800;color:var(--blue2);font-size:14px}
-  .callout div b{font-size:clamp(15px,1.5vw,20px)}
-  .callout div p{color:var(--mut);font-size:clamp(13px,1.25vw,16px);margin-top:2px;line-height:1.35}
-  /* email sequence */
-  .seq{display:flex;flex-direction:column;gap:11px}
-  .em{display:flex;gap:16px;align-items:center;background:var(--glass);border:1px solid var(--stroke);
-    border-radius:14px;padding:14px 18px}
-  .em .day{flex:none;width:74px;font-weight:800;color:var(--blue2);font-size:clamp(12px,1.2vw,15px)}
-  .em .body b{font-size:clamp(14px,1.45vw,19px)}
-  .em .body p{color:var(--mut);font-size:clamp(12px,1.2vw,15px);margin-top:2px}
-  .chip{padding:9px 16px;border-radius:12px;background:var(--glass);border:1px solid var(--stroke);
-    font-weight:600;font-size:clamp(13px,1.35vw,18px);display:flex;gap:9px;align-items:center}
-  .chip .e{font-size:18px}
-  .ngrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
-  .ncard{background:var(--glass);border:1px solid var(--stroke);border-radius:16px;padding:13px 18px;backdrop-filter:blur(12px)}
-  .ncard .nm{font-weight:800;color:var(--blue2);font-size:clamp(15px,1.55vw,21px)}
-  .ncard .nn{color:var(--faint);font-size:clamp(10px,1.05vw,13px);text-transform:uppercase;letter-spacing:.09em;margin-left:9px}
-  .ncard .lt{color:var(--ink);font-size:clamp(13px,1.3vw,17px);margin-top:5px;line-height:1.25}
-  .ncard .qw{color:var(--green);font-size:clamp(10px,1.0vw,13px);font-weight:600;margin-top:6px;line-height:1.2}
-  table.niche{border-collapse:separate;border-spacing:0 10px;width:100%}
-  table.niche td{padding:14px 18px;background:var(--glass);border-top:1px solid var(--stroke);
-    border-bottom:1px solid var(--stroke);font-size:clamp(13px,1.4vw,19px)}
-  table.niche td:first-child{border-left:1px solid var(--stroke);border-radius:14px 0 0 14px;font-weight:700;color:var(--blue2);width:30%}
-  table.niche td:last-child{border-right:1px solid var(--stroke);border-radius:0 14px 14px 0;color:var(--ink)}
-  .big-quote{font-size:clamp(26px,4.4vw,64px);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:18ch}
-  .warm{height:54px;border-radius:14px;margin-top:8px;
-    background:linear-gradient(90deg,#ff7a4d,#ffcf6b 30%,#5b9cff 75%,#2a3458);position:relative}
-  .warm .lbl{position:absolute;top:-26px;font-size:13px;font-weight:700}
-  @media print{
-    body{overflow:visible}
-    .slide{position:relative;opacity:1!important;visibility:visible!important;transform:none!important;
-      page-break-after:always;height:100vh;width:100vw}
-    .hud,.meta,.arrows{display:none}
-  }
+  .wrap{width:100%;max-width:820px}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:13px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:14px}
+  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--grad)}
+  h1{font-size:clamp(30px,5vw,52px);line-height:1.05;letter-spacing:-.02em;font-weight:800}
+  h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--mut);font-size:clamp(15px,1.7vw,19px);margin-top:14px;max-width:54ch;line-height:1.5}
+  .calls{display:flex;flex-direction:column;gap:14px;margin-top:34px}
+  a.call{display:flex;align-items:center;justify-content:space-between;gap:20px;text-decoration:none;
+    background:var(--glass);border:1px solid var(--stroke);border-radius:18px;padding:22px 26px;
+    box-shadow:var(--shadow);transition:transform .15s ease,box-shadow .15s ease}
+  a.call:hover{transform:translateY(-2px);box-shadow:0 22px 56px rgba(28,52,107,.16)}
+  .call .t{font-size:clamp(18px,2.1vw,24px);font-weight:800;color:var(--ink)}
+  .call .d{color:var(--mut);font-size:clamp(13px,1.3vw,16px);margin-top:4px}
+  .call .go{flex:none;font-weight:800;color:var(--blue);font-size:22px}
+  .foot{margin-top:30px;color:var(--faint);font-size:13px;letter-spacing:.04em}
 </style>
 </head>
 <body>
-<div class="deck" id="deck">
-
-  <!-- 1 TITLE -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>Remote Goats · Community Call</div>
-    <h1>Lead Magnets<br><span class="grad">&amp; Your Email List</span></h1>
-    <p class="sub">Why you need one, and how to make one people actually want.</p>
-    <div class="row mt" style="gap:14px">
-      <span class="pill">🧲 The free thing</span>
-      <span class="pill">📧 The list you own</span>
-      <span class="pill">✅ How to nail yours</span>
+  <div class="wrap">
+    <div class="kicker"><span class="dot"></span>Remote Goats · Creator Kickstarter</div>
+    <h1>Community Call <span class="grad">Slides</span></h1>
+    <p class="sub">Slide decks from our community calls. Click one to open it full-screen, then use the arrow keys to move through it.</p>
+    <div class="calls">
+      <a class="call" href="./lead-magnets/">
+        <div>
+          <div class="t">Lead Magnets &amp; Your Email List</div>
+          <div class="d">Why you need a lead magnet, how to pick one, and how to make one people actually want.</div>
+        </div>
+        <div class="go">→</div>
+      </a>
     </div>
-  </section>
-
-  <!-- 2 OWN vs RENT -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>The big idea</div>
-    <h2>You <span class="grad">own</span> your list.<br>You <span style="color:var(--red)">rent</span> your followers.</h2>
-    <div class="row mt center">
-      <div class="card grow" style="border-color:rgba(86,224,138,.4)">
-        <span class="ico">📧</span>
-        <h3>Your email list: yours</h3>
-        <p>Real addresses in your account. You hit send, it lands in the inbox. No algorithm deciding who hears from you.</p>
-        <div class="pill mt2" style="border-color:rgba(86,224,138,.4);color:var(--green)">🔒 You control it</div>
-      </div>
-      <div class="card grow" style="border-style:dashed;opacity:.78">
-        <span class="ico">📱</span>
-        <h3>Your followers: borrowed</h3>
-        <p>They live on Instagram's land. Instagram decides reach, changes the rules, and can shut it down. Nothing you can do.</p>
-        <div class="pill mt2" style="border-color:rgba(255,122,122,.4);color:var(--red)">⚠️ They control it</div>
-      </div>
-    </div>
-    <p class="lead mt2" style="max-width:48ch">If Instagram disappeared tonight, your email list would still be yours tomorrow. The other way around is not true.</p>
-  </section>
-
-  <!-- 3 THIS HAPPENS -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>Not being dramatic</div>
-    <h2>This happens to real people</h2>
-    <div class="row mt wrap">
-      <div class="card grow"><span class="ico">🔓</span><h3>Hacked</h3><p>Accounts with tens of thousands of followers gone in a couple of hours.</p></div>
-      <div class="card grow"><span class="ico">🚫</span><h3>Suspended</h3><p>Banned overnight for something they didn't do, with almost no way to appeal.</p></div>
-      <div class="card grow"><span class="ico">🧹</span><h3>Purged</h3><p>Platform-wide cleanups wipe millions of followers in a single day.</p></div>
-    </div>
-    <p class="lead mt2" style="max-width:52ch">No email list? You start from zero. With a list, you log in, send one message, and you're back.</p>
-  </section>
-
-  <!-- 4 WHAT IS A LEAD MAGNET -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>The definition</div>
-    <h2>So what's a lead magnet?</h2>
-    <p class="sub" style="max-width:46ch">Nobody wakes up wanting more email. You give them a reason. That reason is your lead magnet.</p>
-    <div class="flow mt center">
-      <div class="node"><div class="ni">🧲</div><div class="nt">A small free useful thing</div><div class="nd">Checklist · template · cheat sheet</div></div>
-      <div class="arrow">⇄</div>
-      <div class="node" style="border-color:var(--stroke2)"><div class="ni">📧</div><div class="nt">Their email address</div><div class="nd">Permission to land in their inbox</div></div>
-    </div>
-    <p class="lead mt2" style="max-width:50ch">They get a quick win. You get permission to show up in their inbox.</p>
-  </section>
-
-  <!-- 5 NOTHING TO SELL -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>The objection</div>
-    <h2>"But I have nothing<br>to sell yet."</h2>
-    <p class="lead mt2" style="max-width:54ch">Your list is the audience you'll sell to <i>later</i>. You build it first, then build the product for the people already on it.</p>
-    <div class="flow mt center">
-      <div class="node" style="border-color:rgba(91,156,255,.5)"><div class="ni">🌱</div><div class="nt">Build the list now</div><div class="nd">Takes months to grow</div></div>
-      <div class="arrow">→</div>
-      <div class="node"><div class="ni">📦</div><div class="nt">Launch a product later</div><div class="nd">Course · coaching · service</div></div>
-      <div class="arrow">→</div>
-      <div class="node" style="border-color:rgba(86,224,138,.5)"><div class="ni">🙋</div><div class="nt">They already said yes</div><div class="nd">The warmest buyers you'll ever have</div></div>
-    </div>
-    <p class="sub mt2" style="max-width:60ch">Bonus: people reply to email, so your list tells you what they want, and that becomes what you sell them.</p>
-  </section>
-
-  <!-- 6 STATS -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>Why email is worth it</div>
-    <h2>Three numbers</h2>
-    <div class="row mt center">
-      <div class="card stat grow"><div class="num">$36</div><div class="lab">Average return for every <b>$1</b> spent on email. A benchmark, not a promise.</div></div>
-      <div class="card stat grow"><div class="num">~43%</div><div class="lab">of your list opens your email, vs a <b>low single-digit %</b> of followers who see a post.</div></div>
-      <div class="card stat grow"><div class="num">3×</div><div class="lab">Email turns attention into a sale about <b>3× better</b> than social.</div></div>
-    </div>
-    <p class="lead mt2" style="max-width:52ch">The people on your list already trust you. That's why they buy.</p>
-  </section>
-
-  <!-- 7 THREE RULES -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>How to pick yours</div>
-    <h2>The 3 rules of a good lead magnet</h2>
-    <div class="row mt wrap">
-      <div class="card grow"><div class="num" style="font-size:48px">1</div><h3 class="mt2">Solves one problem, fast</h3><p>Not "everything about investing." One thing they're stuck on that you can solve in about 30 minutes.</p></div>
-      <div class="card grow"><div class="num" style="font-size:48px">2</div><h3 class="mt2">Points to what you'll sell</h3><p>The first small step toward your future course or service. Right freebie, right people.</p></div>
-      <div class="card grow"><div class="num" style="font-size:48px">3</div><h3 class="mt2">A quick win up front</h3><p>Consumable in about an hour, with a fast win at the start. A long ebook with no quick win just sits in their downloads, unopened.</p></div>
-    </div>
-    <p class="lead mt2">One problem. One promise. One quick win.</p>
-  </section>
-
-  <!-- 8 FORMATS -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>Easiest = best</div>
-    <h2>The best formats for beginners</h2>
-    <div class="row mt wrap" style="gap:14px;max-width:62vw">
-      <span class="chip"><span class="e">✅</span> Checklist</span>
-      <span class="chip"><span class="e">📝</span> Template</span>
-      <span class="chip"><span class="e">📄</span> Cheat sheet</span>
-      <span class="chip"><span class="e">📘</span> Short ebook</span>
-      <span class="chip"><span class="e">🧰</span> Resource list</span>
-    </div>
-    <div class="card mt soft" style="max-width:62ch">
-      <p>The easiest ones to make are also the ones that work best. A checklist is just a Google Doc you save as a PDF in twenty minutes.</p>
-    </div>
-  </section>
-
-  <!-- 9 MISTAKES -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>What kills it</div>
-    <h2>The mistakes to avoid</h2>
-    <ul class="clean mt" style="max-width:60ch">
-      <li><span class="b no">✕</span><div><b>Too broad.</b> <span class="muted">"A free guide to getting healthy." Speaks to no one.</span></div></li>
-      <li><span class="b no">✕</span><div><b>Too long.</b> <span class="muted">Takes an afternoon, so they never get the win.</span></div></li>
-      <li><span class="b no">✕</span><div><b>Not tied to anything.</b> <span class="muted">A random freebie. You collect the wrong emails.</span></div></li>
-      <li><span class="b no">✕</span><div><b>"Sign up for my newsletter."</b> <span class="muted">That's not a lead magnet. It offers nothing in return.</span></div></li>
-    </ul>
-  </section>
-
-  <!-- 10 NICHE EXAMPLES -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>Make it real</div>
-    <h2>What yours might look like</h2>
-    <div class="ngrid">
-      <div class="ncard"><span class="nm">Rachel</span><span class="nn">faith &amp; family</span><div class="lt">"The 5-Minute Family Devotional"</div><div class="qw">⚡ Quick win: a real faith chat at dinner tonight</div></div>
-      <div class="ncard"><span class="nm">Doug</span><span class="nn">Bucket List Boomers</span><div class="lt">"The Over-70 Bucket List Planner"</div><div class="qw">⚡ Quick win: your #1 trip, dated, on page one</div></div>
-      <div class="ncard"><span class="nm">Daina</span><span class="nn">adult piano</span><div class="lt">"Play Your Favorite Song in 7 Days"</div><div class="qw">⚡ Quick win: play a real song on day one</div></div>
-      <div class="ncard"><span class="nm">Alyssa</span><span class="nn">travel hacking</span><div class="lt">"Your First Free Flight" (points checklist)</div><div class="qw">⚡ Quick win: card applied, points banking today</div></div>
-      <div class="ncard"><span class="nm">Jim &amp; Rhonda</span><span class="nn">The Next Big Adventure</span><div class="lt">"The Next Big Trip Planner"</div><div class="qw">⚡ Quick win: a booking hack that saves you $100s</div></div>
-      <div class="ncard"><span class="nm">Rhoda</span><span class="nn">travel after 60</span><div class="lt">"The Solo 60 Checklist"</div><div class="qw">⚡ Quick win: the biggest safety fear, handled</div></div>
-      <div class="ncard"><span class="nm">Todd &amp; Mairin</span><span class="nn">slow travel · SE Asia</span><div class="lt">"A Guide To Must-Try Food in Thailand"</div><div class="qw">⚡ Quick win: the one dish to order first</div></div>
-      <div class="ncard"><span class="nm">Rhonda</span><span class="nn">end-of-life coach</span><div class="lt">"The 'In Case Anything Happens' Checklist"</div><div class="qw">⚡ Quick win: documents sorted in 5 minutes</div></div>
-    </div>
-  </section>
-
-  <!-- 11 TITLE FORMULA -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>The title sells it</div>
-    <h2>Name the <span class="grad">outcome</span>, not the topic</h2>
-    <div class="row mt center" style="gap:18px">
-      <div class="card grow" style="border-color:rgba(255,122,122,.35)"><span class="tag">Topic (boring)</span><h3 class="mt2 muted">"Content marketing guide"</h3></div>
-      <div class="arrow" style="font-size:34px">→</div>
-      <div class="card grow" style="border-color:rgba(86,224,138,.4)"><span class="tag">Outcome (wanted)</span><h3 class="mt2">"30-Day Content Calendar"</h3></div>
-    </div>
-    <div class="mt2 card soft" style="max-width:64ch">
-      <p style="color:var(--ink);font-size:clamp(15px,1.5vw,20px);line-height:1.7">
-      "The <b>[number]</b>-step checklist to <b>[result]</b>" ·
-      "How to <b>[result]</b> in <b>[timeframe]</b> without <b>[the annoying part]</b>" ·
-      "The exact <b>template</b> I use to <b>[result]</b>"</p>
-    </div>
-    <p class="sub mt2">Put a number in it. Name a clear result. Keep it believable. Seven days, not overnight.</p>
-  </section>
-
-  <!-- 12 WHY GIVE EMAIL -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>Opt-in psychology</div>
-    <h2>"Why would I give<br>you my email?"</h2>
-    <div class="row mt center" style="gap:18px;max-width:70vw">
-      <div class="card grow"><span class="ico">😟</span><h3>The cost they feel</h3><p>Their inbox is a mess. "What else will this person send me?" You have about 3 seconds to beat that worry.</p></div>
-      <div class="arrow" style="font-size:40px">⚖️</div>
-      <div class="card grow" style="border-color:rgba(86,224,138,.4)"><span class="ico">🎁</span><h3>The win you offer</h3><p>One clear promise. One fast result. When the trade is obviously in their favor, they say yes without thinking.</p></div>
-    </div>
-    <p class="lead mt2" style="max-width:56ch">Give it a name. "The 15-Minute Declutter Checklist," not "my checklist." A name makes it feel like a real product.</p>
-  </section>
-
-  <!-- 13 RECAP -->
-  <section class="slide">
-    <div class="kicker"><span class="dot"></span>Your one job this week</div>
-    <h2>Pick <span class="grad">one</span> lead magnet.</h2>
-    <p class="lead mt2" style="max-width:60ch">The 15-minute checklist version. Just make sure it actually gets someone a result, a real quick win.</p>
-    <ul class="clean mt2" style="max-width:60ch">
-      <li><span class="b good">✓</span><div>You <b>own</b> your list. You <b>rent</b> your followers.</div></li>
-      <li><span class="b good">✓</span><div>One free thing that solves one problem fast, pointing toward what you'll sell.</div></li>
-      <li><span class="b good">✓</span><div>Make it specific, make the win quick, and name the outcome.</div></li>
-      <li><span class="b good">✓</span><div>Getting it live + delivering it automatically: the Email Mastery course.</div></li>
-    </ul>
-    <p class="lead mt2 grad" style="font-size:clamp(22px,3vw,40px)">Questions?</p>
-  </section>
-
-</div>
-
-<div class="brand"><span class="d"></span>Remote Goats</div>
-<div class="meta"><span id="cur">1</span> / <span id="tot">23</span></div>
-<div class="arrows"><button id="prev">‹</button><button id="next">›</button></div>
-<div class="hud"><div class="bar" id="bar"></div></div>
-
-<script>
-  const slides=[...document.querySelectorAll('.slide')];
-  let i=0; const tot=slides.length;
-  document.getElementById('tot').textContent=tot;
-  function show(n){
-    i=Math.max(0,Math.min(tot-1,n));
-    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
-    document.getElementById('cur').textContent=i+1;
-    document.getElementById('bar').style.width=((i+1)/tot*100)+'%';
-  }
-  function next(){show(i+1)} function prev(){show(i-1)}
-  document.addEventListener('keydown',e=>{
-    if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();next()}
-    if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();prev()}
-    if(e.key==='Home')show(0); if(e.key==='End')show(tot-1);
-  });
-  document.getElementById('next').onclick=next;
-  document.getElementById('prev').onclick=prev;
-  show(0);
-</script>
+    <div class="foot">Built with Remote Goats. New calls get added here.</div>
+  </div>
 </body>
 </html>
