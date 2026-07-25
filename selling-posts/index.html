@@ -186,18 +186,6 @@
   .spec{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px}
   .spec div{display:flex;gap:9px;align-items:flex-start;font-size:clamp(11.5px,1.15vw,16px);line-height:1.35}
   .spec div i{font-style:normal;color:var(--green);flex:none;font-weight:800}
-  /* a real-looking profile grid: 6 of their actual posts across */
-  .g6{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(6px,.7vw,10px);margin-top:12px}
-  .g6 figure{position:relative;border-radius:11px;overflow:hidden;border:1px solid var(--stroke);
-    box-shadow:0 8px 20px rgba(28,52,107,.09)}
-  .g6 img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;max-height:clamp(120px,21vh,215px)}
-  .g6 figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 7px 6px;color:#fff;
-    font-size:clamp(8px,.79vw,10.5px);font-weight:600;line-height:1.25;
-    background:linear-gradient(transparent,rgba(8,14,30,.86))}
-  .g6 figure.hi{border:2px solid var(--green);box-shadow:0 0 0 4px rgba(31,157,87,.18),0 8px 20px rgba(28,52,107,.09)}
-  .g6 figure.hi::before{content:"we'll rewrite this one";position:absolute;top:6px;left:6px;z-index:2;
-    background:var(--green);color:#fff;font-size:clamp(7px,.68vw,9px);font-weight:800;letter-spacing:.05em;
-    text-transform:uppercase;padding:3px 7px;border-radius:999px}
   /* the five-post-types list on the overview slide */
   .ideas{display:flex;flex-direction:column;gap:clamp(7px,.9vh,11px);margin-top:16px}
   .idea{display:flex;align-items:center;gap:clamp(11px,1.3vw,20px);background:var(--glass);
